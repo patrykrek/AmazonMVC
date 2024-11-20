@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Assign / Role";
+}
+
+@model AssignRoleViewModel
+
+
+<div class="text-center">
+    <p>Assign role: <strong>@ViewBag.RoleName</strong> to a user.</p>
+</div>
+
+<form asp-controller="Role" asp-action="AssignRoleToUserForm">
+    <div class="form-group">
+        <label class="mt-4">Email</label>
+        <input class="form-control" type="text" placeholder="Enter Email" asp-for="Email"></input>
+        <span class="text-danger" asp-validation-for="Email"></span>
+    </div>
+
+    <input type="hidden" asp-for="RoleId"></input>
+
+    <button class="btn btn-primary" type="submit" style="margin-top:10px;">Assign</button>
+</form>

@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Products";
+}
+
+<div class="text-center">
+    <h1 class="display-4"><b>Products</b></h1>
+
+    @if (User.IsInRole("User"))
+    {       
+        <a asp-controller="Product" asp-action="DisplayProducts" class="btn btn-custom">Display Products</a>
+    }
+    @if (User.IsInRole("Admin"))
+    {
+        <a asp-controller="Product" asp-action="DisplayProducts" class="btn btn-custom">Display Products</a>
+        <a asp-controller="Product" asp-action="AddProduct" class="btn btn-custom2">Add Products</a>
+    }
+   
+
+
+</div>
+
+

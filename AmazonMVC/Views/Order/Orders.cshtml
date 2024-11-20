@@ -1,0 +1,62 @@
+﻿@{
+    ViewData["Title"] = "Orders";
+}
+
+ @model List<AmazonMVC.DTO.GetOrderDTO>
+
+
+
+
+@if (User.IsInRole("User"))
+{
+
+    <div class="text-center">
+        <h1 class="display-4"><b>My Orders</b></h1>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        ID
+                    </th>
+                    <th>
+                        Order Date
+                    </th>
+                    <th>
+                        User Id
+                    </th>
+                    <th>
+                        Order Items
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var order in Model)
+                {
+                    <tr>
+                        <td>
+                            @order.Id
+                        </td>
+                        <td>
+                            @order.OrderDate
+                        </td>
+                        <td>
+                            @order.UserId
+                        </td>
+                        <td>
+                            <ul>
+                                @foreach (var orderitem in order.OrderItems)
+                                {
+                                    <li>
+                                        Product ID: @orderitem.ProductId - Quantity: @orderitem.Quantity - Price: @orderitem.Price
+                                    </li>
+                                }
+                            </ul>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+

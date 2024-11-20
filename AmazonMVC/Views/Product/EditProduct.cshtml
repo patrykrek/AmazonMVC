@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Edit / Product";
+}
+
+@model AmazonMVC.DTO.UpdateProductDTO
+
+
+<div class="text-center">
+    <h1 class="display-4"><b>Edit Product</b></h1>
+
+</div>
+
+<form asp-controller="Product" asp-action="EditProductForm">
+    <div class="form-group">
+        <input type="hidden" asp-for="Id"></input>
+    </div>
+
+    <div class="form-group">
+        <label class="mt-4">Name</label>
+        <input class="form-control" type="text" placeholder="Edit Name" asp-for="Name"></input>
+    </div>
+
+    <div class="form-group">
+        <label class="mt-4">Price</label>
+        <input class="form-control" type="number" placeholder="0.00" asp-for="Price" step="0.01"></input>
+    </div>
+
+    <div class="form-group">
+        <label class="mt-4">Stock Quantity</label>
+        <input class="form-control" type="number" placeholder="0" asp-for="StockQuantity"></input>
+    </div>
+
+    <div class="form-group">
+        <label class="mt-4">Category ID</label>
+        <input class="form-control" type="number" placeholder="0" asp-for="CategoryId"></input>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Ok</button>
+</form>

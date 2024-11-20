@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Add / Item";
+}
+
+@model AmazonMVC.DTO.AddCartDTO
+
+<div class="text-center">
+    <h1 class="display-4"><b>Add To Cart</b></h1>
+
+    
+</div>
+
+<form asp-controller="Cart" asp-action="AddItemsToCartForm">
+    <div class="form-group">
+        <label class="mt-4">Quantity</label>
+        <input class="form-control" type="number" placeholder="0" asp-for="Quantity" required min="1"></input>
+    </div>
+
+    <input type="hidden" asp-for="ProductId"></input>
+    <input type="hidden" asp-for="UserId"></input>
+
+    <button class="btn btn-primary" type="submit" style="margin-top:5px;">Add Item</button>
+</form>

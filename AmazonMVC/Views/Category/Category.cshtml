@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Categories";
+}
+
+
+
+<div class="text-center">
+     <h1 class="display-4"><b>Choose Action</b></h1>
+    @if (User.IsInRole("User"))
+    {
+        <a asp-controller="Category" asp-action="DisplayCategory" class="btn btn-custom">Display Categories</a>
+    }
+    @if (User.IsInRole("Admin"))
+    {
+        <a asp-controller="Category" asp-action="DisplayCategory" class="btn btn-custom">Display Categories</a>
+        <a asp-controller="Category" asp-action="AddCategory" class="btn btn-custom2">Add Category</a>
+    }
+   
+  
+</div>

@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "Display / Products";
+}
+
+@model List<AmazonMVC.DTO.GetProductDTO>
+
+<div class="text-center">
+    <h1 class="display-4"><b>All Products</b></h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Name 
+                </th>
+                <th>
+                    Price($) 
+                </th>
+                <th>
+                    Stock Quantity 
+                </th>
+                <th>
+                    Category ID
+                </th>
+                <th>
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td>
+                        @product.Id
+                    </td>
+                    <td>
+                        @product.Name
+                    </td>
+                    <td>
+                        @product.Price
+                    </td>
+                    <td>
+                        @product.StockQuantity
+                    </td>
+                    <td>
+                        @product.CategoryId
+                    </td>
+                    <td>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a asp-controller="Product" asp-action="DeleteProduct" class="btn btn-danger btn-sm" asp-route-id="@product.Id">Delete</a>
+                            <a asp-controller="Product" asp-action="EditProduct" class="btn btn-primary btn-sm" asp-route-id="@product.Id">Edit</a>
+                        }                      
+                        <a asp-controller="Cart" asp-action="AddItemsToCart" class="btn btn-custom btn-sm" asp-route-ProductId="@product.Id">Add to cart</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>

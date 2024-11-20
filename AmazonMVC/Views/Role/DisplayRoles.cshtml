@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Display / Roles";
+}
+@model List<Role>
+
+<div class="text-center">
+    <h1 class="display-4"><b>Available Roles</b></h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var role in Model)
+            {
+                <tr>
+                    <td>
+                        @role.Id
+                    </td>
+                    <td>
+                        @role.Name
+                    </td>
+                    <td>
+                        <a asp-controller="Role" asp-action="AssignRole" class="btn btn-assign btn-sm" asp-route-roleId="@role.Id">Assign</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,58 @@
+﻿@{
+    ViewData["Title"] = "Display / Cart";
+}
+
+@model List<AmazonMVC.DTO.GetCartDTO>
+
+<div class="text-center">
+    <h1 class="display-4"><b>My Cart</b></h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Quantity
+                </th>
+                <th>
+                    Product ID
+                </th>
+                <th>
+                    Total Price($)
+                </th>
+                <th>
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Id
+                    </td>
+                    <td>
+                        @item.Quantity
+                    </td>
+                    <td>
+                        @item.ProductId
+                    </td>
+                    <td>
+                        @item.Price
+                    </td>
+                    <td>
+                        <a asp-controller="Cart" asp-action="DeleteCartItem" class="btn btn-danger btn-sm" asp-route-id="@item.Id">Delete</a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+        
+    </table>
+
+    <a asp-controller="Cart" asp-action="ClearCart" class="btn btn-clear ">Clear</a>
+    <a asp-controller="Order" asp-action="CreateOrder" class="btn btn-createorder">Create Order</a>
+</div>

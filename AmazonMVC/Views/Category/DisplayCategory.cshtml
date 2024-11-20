@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Display / Categories";
+}
+
+@model List<AmazonMVC.DTO.GetCategoryDTO>
+
+<div class="text-center">
+    <h1 class="display-4"><b>Available Categories</b></h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Name
+                </th>
+                @if (User.IsInRole("Admin"))
+                {
+                    <th>
+                        Actions
+                    </th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var category in Model)
+            {
+                <tr>
+                    <td>
+                        @category.Id
+                    </td>
+                    <td>
+                        @category.Name
+                    </td>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <td>
+                            <a asp-controller="Category" asp-action="DeleteCategory" class="btn btn-danger btn-sm" asp-route-id="@category.Id">Delete</a>
+                            <a asp-controller="Category" asp-action="EditCategory" class="btn btn-primary btn-sm" asp-route-id="@category.Id">Edit</a>
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

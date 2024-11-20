@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Add / Products";
+}
+
+@model AmazonMVC.DTO.AddProductDTO
+
+<div class="text-center">
+    <h1 class="display-4"><b>Add Product</b></h1>
+
+</div>
+
+<form asp-controller="Product" asp-action="AddProductsForm">
+    <div class="form-group">
+        <label class="mt-4">Name</label>
+        <input class="form-control" type="text" placeholder="Enter Name" asp-for="Name"></input>
+        <span class="text-danger" asp-validation-for="Name"></span>
+    </div>
+
+    <div class="form-group">
+        <label class="mt-4">Price</label>
+        <input class="form-control" type="number" placeholder="0.00" asp-for="Price" step="0.01"></input>
+        <span class="text-danger" asp-validation-for="Price"></span>
+    </div>
+
+    <div class="form-group">
+        <label class="mt-4">Stock Quantity</label>
+        <input class="form-control" type="number" placeholder="0" asp-for="StockQuantity"></input>
+        <span class="text-danger" asp-validation-for="StockQuantity"></span>
+    </div>
+
+    <div class="form-group">
+        <label class="mt-4">Category ID</label>
+        <input class="form-control" type="number" placeholder="0" asp-for="CategoryId"></input>
+        <span class="text-danger" asp-validation-for="CategoryId"></span>
+    </div>
+
+    <button class="btn btn-primary" type="submit" style="margin-top:10px;">Ok</button>
+</form>
